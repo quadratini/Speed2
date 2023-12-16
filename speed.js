@@ -26,7 +26,7 @@ button1.addEventListener("click", () => {
         button2.innerHTML = getRandomWord()
         button3.innerHTML = getRandomWord()
         randomValue = getRandomNumber(0, 3)
-        setButtonToAnswer()
+        setButtonToAnswer(randomValue)
         scoreCount.innerHTML = ++score
     }
 })
@@ -36,7 +36,7 @@ button2.addEventListener("click", () => {
         button2.innerHTML = getRandomWord()
         button3.innerHTML = getRandomWord()
         randomValue = getRandomNumber(0, 3)
-        setButtonToAnswer()
+        setButtonToAnswer(randomValue)
         scoreCount.innerHTML = ++score
     }
 })
@@ -46,7 +46,7 @@ button3.addEventListener("click", () => {
         button2.innerHTML = getRandomWord()
         button3.innerHTML = getRandomWord()
         randomValue = getRandomNumber(0, 3)
-        setButtonToAnswer()
+        setButtonToAnswer(randomValue)
         scoreCount.innerHTML = ++score
     }
 })
