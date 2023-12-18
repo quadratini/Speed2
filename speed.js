@@ -1,12 +1,11 @@
-const wordBank = ['hello', 'test', '1', 'banana', 'grape', 'orange', 'cat']
+let wordBank = ['hello', 'test', 'yeah', 'banana', 'grape', 'orange', 'cat']
 
-const button1 = document.getElementById("button1")
-const button2 = document.getElementById("button2")
-const button3 = document.getElementById("button3")
-const answerLabel = document.getElementById("answerLabel")
-const scoreCount = document.getElementById("score")
-
-// note: can create an array of buttons, then loop through them. Do this after initial version
+const button1 = document.getElementById('button1')
+const button2 = document.getElementById('button2')
+const button3 = document.getElementById('button3')
+const answerLabel = document.getElementById('answerLabel')
+const scoreCount = document.getElementById('score')
+const buttons = [button1, button2, button3]
 
 // instantiate buttons
 button1.innerHTML = getRandomWord()
@@ -20,35 +19,10 @@ let randomValue = getRandomNumber(0, 3)
 setButtonToAnswer(randomValue)
 
 // add listeners
-button1.addEventListener("click", () => {
-    if (answerLabel.innerHTML === button1.innerHTML) {
-        button1.innerHTML = getRandomWord()
-        button2.innerHTML = getRandomWord()
-        button3.innerHTML = getRandomWord()
-        randomValue = getRandomNumber(0, 3)
-        setButtonToAnswer(randomValue)
-        scoreCount.innerHTML = ++score
-    }
-})
-button2.addEventListener("click", () => {
-    if (answerLabel.innerHTML === button2.innerHTML) {
-        button1.innerHTML = getRandomWord()
-        button2.innerHTML = getRandomWord()
-        button3.innerHTML = getRandomWord()
-        randomValue = getRandomNumber(0, 3)
-        setButtonToAnswer(randomValue)
-        scoreCount.innerHTML = ++score
-    }
-})
-button3.addEventListener("click", () => {
-    if (answerLabel.innerHTML === button3.innerHTML) {
-        button1.innerHTML = getRandomWord()
-        button2.innerHTML = getRandomWord()
-        button3.innerHTML = getRandomWord()
-        randomValue = getRandomNumber(0, 3)
-        setButtonToAnswer(randomValue)
-        scoreCount.innerHTML = ++score
-    }
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        gameLoop(button)
+    })
 })
 
 function setButtonToAnswer(randomValue) {
@@ -61,9 +35,10 @@ function setButtonToAnswer(randomValue) {
     }
 }
 
+// Removes and returns a random word (problems if not enough words in bank and called)
 function getRandomWord() {
-    const randomNumber = getRandomNumber(0, wordBank.length)
-    const randomWord = wordBank[randomNumber]
+    const randomIndex = getRandomNumber(0, wordBank.length)
+    const randomWord = wordBank.splice(randomIndex, 1)
     return randomWord
 }
 
@@ -72,3 +47,23 @@ function getRandomNumber(min, max) {
     return randomNumber
 }
 
+function resetWordBank() {
+    wordBank = ['hello', 'test', 'yeah', 'banana', 'grape', 'orange', 'cat']
+}
+
+function gameLoop(button) {
+    if (answerLabel.innerHTML === button.innerHTML) {
+        button1.innerHTML = getRandomWord()
+        button2.innerHTML = getRandomWord()
+        button3.innerHTML = getRandomWord()
+        randomValue = getRandomNumber(0, 3)
+        setButtonToAnswer(randomValue)
+        scoreCount.innerHTML = ++score
+        resetWordBank()
+    } else {
+        answerLabel.innerHTML = 'Game Over'
+        buttons.forEach(button => {
+            button.disabled = true
+        })
+    }
+}
