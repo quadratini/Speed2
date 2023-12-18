@@ -25,6 +25,20 @@ buttons.forEach(button => {
     })
 })
 
+const timer = {
+    start() {
+        this.timeoutID = setTimeout(() => {
+            gameOver()
+        }, 1000)
+    },
+
+    cancel() {
+        clearTimeout(this.timeoutID)
+    }
+}
+
+timer.start()
+
 function setButtonToAnswer(randomValue) {
     if (randomValue === 0) {
         answerLabel.innerHTML = button1.innerHTML
@@ -60,10 +74,16 @@ function gameLoop(button) {
         setButtonToAnswer(randomValue)
         scoreCount.innerHTML = ++score
         resetWordBank()
+        timer.cancel()
+        timer.start()
     } else {
-        answerLabel.innerHTML = 'Game Over'
-        buttons.forEach(button => {
-            button.disabled = true
-        })
+        gameOver()
     }
+}
+
+function gameOver() {
+    answerLabel.innerHTML = 'Game Over'
+    buttons.forEach(button => {
+        button.disabled = true
+    })
 }
