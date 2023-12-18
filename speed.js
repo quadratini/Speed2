@@ -1,4 +1,4 @@
-let wordBank = ['hello', 'test', 'yeah', 'banana', 'grape', 'orange', 'cat']
+let wordBank = ['Banana','Apples','Oranges','Hip','Jim','Pull','Out','Bimbo','Billy','Weenie','Woah','Beach','Away','Drink','Starship','Alien','Monkey','Book','Phone','Pen','Marker','Bottle','Scissors','Board','Paper','Mat','Speakers','Octopus','Shark','Mask','Tissue','Camera','Lamp','Light','Computer','Desktop','Laptop','Ink','Sword','Controller','Wires','Mic','Music','Charger','String','Integer','Array','Jump','Fall','Hit','Ouch','Good','Try','Guy','Nice','Who','Are','You','Him','Back','Left','Right','Middle','Side','all','they','care','about','is','SOFTWARE','I','think','some','of','the','opportunities','here','might','be','of','use','to','you','Friend','was','applying','for','that','job','through','this','website']
 
 const button1 = document.getElementById('button1')
 const button2 = document.getElementById('button2')
@@ -62,7 +62,7 @@ function getRandomNumber(min, max) {
 }
 
 function resetWordBank() {
-    wordBank = ['hello', 'test', 'yeah', 'banana', 'grape', 'orange', 'cat']
+    wordBank = ['Banana','Apples','Oranges','Hip','Jim','Pull','Out','Bimbo','Billy','Weenie','Woah','Beach','Away','Drink','Starship','Alien','Monkey','Book','Phone','Pen','Marker','Bottle','Scissors','Board','Paper','Mat','Speakers','Octopus','Shark','Mask','Tissue','Camera','Lamp','Light','Computer','Desktop','Laptop','Ink','Sword','Controller','Wires','Mic','Music','Charger','String','Integer','Array','Jump','Fall','Hit','Ouch','Good','Try','Guy','Nice','Who','Are','You','Him','Back','Left','Right','Middle','Side','all','they','care','about','is','SOFTWARE','I','think','some','of','the','opportunities','here','might','be','of','use','to','you','Friend','was','applying','for','that','job','through','this','website']
 }
 
 function gameLoop(button) {
